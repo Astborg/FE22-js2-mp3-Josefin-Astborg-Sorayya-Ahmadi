@@ -58,7 +58,7 @@ if(cartItems && productGrid){
   productGrid.innerHTML += 
   `<div class="cartTotal">Cart Total:${cartCost}</div>`
   productGrid.innerHTML += `<button onclick="emptyCart()">Empty cart</button>`
-  productGrid.innerHTML += `<button onclick="checkout()">Checkout</button>`
+  productGrid.innerHTML += `<button onclick="checkout(id)">Checkout</button>`
 
   
 }
@@ -75,10 +75,10 @@ displayCart()
     //checkout
     function checkout(id){
             let cartItemsObj = localStorage.getItem('productsInCart')
-            cartItemsObj = JSON.parse(cartItemsObj)
-            console.log(cartItemsObj)
+            let garbo = JSON.parse(cartItemsObj)
+            console.log(garbo)
             
-            let cartArray = Object.values(cartItemsObj)
+            let cartArray = Object.values(garbo)
             console.log(cartArray )
             let index = ''
             cartArray.map((item) =>{
@@ -106,7 +106,7 @@ displayCart()
             
         }
         
-          cartArray.map(item =>{
+          let obj = cartArray.map(item =>{
           let newLager = item.lager - item.inCart
           console.log(newLager)
           if(item.id === id){
@@ -118,10 +118,10 @@ displayCart()
           
         })  
      
-        let obj = cartArray.reduce(function(acc, cur, ndex) {
-          acc[ndex] = cur;
-          return acc[ndex];
-        }, {});
+        // let obj = cartArray.reduce(function(acc, cur, ndex) {
+        //   acc[ndex] = cur;
+        //   return acc[ndex];
+        // }, {});
     
         patchPost(obj)
         console.log(obj)

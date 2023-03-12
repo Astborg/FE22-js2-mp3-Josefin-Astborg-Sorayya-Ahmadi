@@ -71,19 +71,22 @@ let products = [
 ]
 
 const euro = document.querySelectorAll('.euro')
+euro.disabled = false
 
 for(let i = 0; i < euro.length; i++ ){
     euro[i].addEventListener('click', () => {
         cartNumbers(products[i])
         totalCost(products[i])
-       // totalStock(products[i])
+        
+       
     })
 }
 
+    
          
 
 
-  function onLoadVartNumbers(){
+  function onLoadCartNumbers(){
     let productNumbers = localStorage.getItem('cartNumbers')
     if(productNumbers){
         lang1.innerHTML = `<div id="cartNr">${cartNr = productNumbers}</div>`
@@ -98,13 +101,17 @@ for(let i = 0; i < euro.length; i++ ){
     if(productNumbers){
         localStorage.setItem('cartNumbers', productNumbers + 1)
         lang1.innerHTML = `<div id="cartNr">${cartNr = productNumbers +1}</div>`
-    }else{
+    }
+    else {
         localStorage.setItem('cartNumbers', 1 )
         lang1.innerHTML = `<div id="cartNr">${cartNr = 1}</div>`
     }
    
     setItems(product)
+    
   }
+
+  
 
   function setItems(product){
     let cartItems = localStorage.getItem('productsInCart')
@@ -117,10 +124,12 @@ for(let i = 0; i < euro.length; i++ ){
                 [product.img]: product
             }
             console.log(cartItems)
-        }
+        }else {
         cartItems[product.img].inCart += 1
         console.log(cartItems) //funkar
-    }else{
+        }
+    }
+    else{
         product.inCart = 1
         cartItems = {
             [product.img]: product
@@ -131,16 +140,15 @@ for(let i = 0; i < euro.length; i++ ){
     
     localStorage.setItem('productsInCart',JSON.stringify(cartItems))
     console.log(localStorage.getItem('productsInCart'))
-  }
+}
 
   function totalCost(product){
     let cartCost = localStorage.getItem('totalCost')
-    
-
     if(cartCost != null){
         cartCost = parseInt(cartCost)
         localStorage.setItem('totalCost', cartCost + product.pris)
-    }else{
+    }
+    else{
         localStorage.setItem('totalCost', product.pris)
     }
     
@@ -166,4 +174,4 @@ for(let i = 0; i < euro.length; i++ ){
     patchPost(obj)
     console.log(obj)
 
-  onLoadVartNumbers()
+  onLoadCartNumbers()

@@ -92,46 +92,46 @@ displayCart()
           
             
       
-      async function patchPost(obj){
-        
-        console.log(arrayIndex)
-        const baseURL = `https://webstore-22fa4-default-rtdb.europe-west1.firebasedatabase.app/`
-        const url = baseURL + `Products/${index}.json`
-            const init = {
-                method: 'PATCH',
-                body: JSON.stringify({obj}),
+            async function patchPost(products) {
+              const baseURL = `https://webstore-22fa4-default-rtdb.europe-west1.firebasedatabase.app/`;
+              const url = baseURL + `Products.json`;
+          
+              let cartItemsObj = localStorage.getItem("productsInCart");
+              let garbo = JSON.parse(cartItemsObj);
+              let cartArray = Object.values(garbo);
+          
+              let productsToUpdate = {};
+          
+              if (products) {
+                cartArray.forEach((item) => {
+                  const productId = item.id;
+                  if (productId in products) {
+                    const newLager = item.lager - item.inCart;
+                    productsToUpdate[productId] = {
+                      ...products[productId],
+                      lager: newLager,
+                    };
+                  }
+                });
+              }
+          
+              const init = {
+                method: "PATCH",
+                body: JSON.stringify(productsToUpdate),
                 headers: {
-                    "Content-type": "application/json; charset=UTF-8",
-                }
-            };
-        
-            const response = await fetch(url, init)
-            const data = await response.json()
-            console.log(data)
-            
-        }
-        
-          let object = cartArray.map(item =>{
-            
-          let newLager = item.lager - item.inCart
-          console.log(newLager)
-          if(item.id !== id){
-           
-          }
-            return{
-              
-              lager: newLager
+                  "Content-type": "application/json; charset=UTF-8",
+                },
+              };
+          
+              const response = await fetch(url, init);
+              const data = await response.json();
             }
           
-        }) 
-     
-        // let obj = cartArray.reduce(function(acc, cur, ndex) {
-        //   acc[ndex] = cur;
-        //   return acc[ndex];
-        // }, {});
-    
-        patchPost(object)
-        console.log(object)
-       
+            // let obj = cartArray.reduce(function(acc, cur, ndex) {
+            //   acc[ndex] = cur;
+            //   return acc[ndex];
+            // }, {});
+          
+            patchPost(products);
         
       }

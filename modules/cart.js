@@ -82,8 +82,8 @@ displayCart()
             console.log(cartArray )
             let arrayIndex = Object.keys(garbo)
             
-            cartArray.map(function(item){
-                 index = item.id
+            index = cartArray.map(function(item){
+                  item.id
               //console.log('DATA OBJ ID', index)
               
             })
@@ -96,7 +96,7 @@ displayCart()
         
         console.log(arrayIndex)
         const baseURL = `https://webstore-22fa4-default-rtdb.europe-west1.firebasedatabase.app/`
-        const url = baseURL + `Products/${arrayIndex}.json`
+        const url = baseURL + `Products/${index}.json`
             const init = {
                 method: 'PATCH',
                 body: JSON.stringify({obj}),
@@ -111,14 +111,15 @@ displayCart()
             
         }
         
-          let obj = cartArray.map(item =>{
+          let object = cartArray.map(item =>{
             
           let newLager = item.lager - item.inCart
           console.log(newLager)
           if(item.id !== id){
+           
           }
             return{
-              ...item,
+              
               lager: newLager
             }
           
@@ -129,8 +130,8 @@ displayCart()
         //   return acc[ndex];
         // }, {});
     
-        patchPost(obj)
-        console.log(obj)
+        patchPost(object)
+        console.log(object)
        
         
       }

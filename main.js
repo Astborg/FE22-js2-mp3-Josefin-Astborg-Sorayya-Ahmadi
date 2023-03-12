@@ -31,7 +31,7 @@ let products = [
     {
         id: 0,
         namn: 'Sneaker1',
-        img: '1product',
+        img: 0,
         pris: 1500,
         lager: 10,
         inCart: 0
@@ -39,7 +39,7 @@ let products = [
     {
         id: 1,
         namn: 'Sneaker2',
-        img: '2product',
+        img: 1,
         pris: 1500,
         lager: 10,
         inCart: 0
@@ -47,7 +47,7 @@ let products = [
     {
         id: 2,
         namn: 'Sneaker3',
-        img: '3product',
+        img: 2,
         pris: 1500,
         lager: 10,
         inCart: 0
@@ -55,7 +55,7 @@ let products = [
     {
         id: 3,
         namn: 'Sneaker4',
-        img: '4product',
+        img: 3,
         pris: 1500,
         lager: 10,
         inCart: 0
@@ -63,7 +63,7 @@ let products = [
     {
         id: 4,
         namn: 'Sneaker5',
-        img: '5product',
+        img: 4,
         pris: 1500,
         lager: 10,
         inCart: 0

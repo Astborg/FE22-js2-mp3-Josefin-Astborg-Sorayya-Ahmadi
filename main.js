@@ -71,12 +71,19 @@ let products = [
 ]
 
 const euro = document.querySelectorAll('.euro')
-euro.disabled = false
+
 
 for(let i = 0; i < euro.length; i++ ){
     euro[i].addEventListener('click', () => {
         cartNumbers(products[i])
         totalCost(products[i])
+        
+         if(products[i].inCart >= 10){
+            euro[i].disabled = true
+        }
+           
+        
+        
         
        
     })

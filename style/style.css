@@ -295,3 +295,51 @@ p{
         padding-bottom: 2vw; 
     }
 }
+
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap");
+
+/* Some styling */
+h1{
+    font-family: "open sans", sans-serif;
+    text-align: center;
+    
+}
+
+
+.bounce{
+    animation-name: bounce;
+    
+    
+}
+
+.bouncing-letters span {
+    
+    animation-timing-function: linear;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    display: inline-block;
+    font-size: 3rem;
+    
+}
+
+@keyframes bounce {
+    20%,
+    50%,
+    80%,
+    to {
+        transform: scale(1, 1);
+    }
+    40% {
+        transform: scale(1.75, 0.65);
+    }
+    45% {
+        transform: scale(1.75, 0.65);
+    }
+    70% {
+        transform: scale(1.25, 0.75);
+    }
+    90% {
+        transform: scale(1.15, 0.85);
+    }
+}

@@ -5,10 +5,9 @@ FE22-js2-mp3-
 Uppdelning av projekt
 Josefin Astborg
 index.html
-js
 style.css
 main.js
-modules
+modules - cart.html, cart.js
 node.modules
 anime.js (bibliotek)
 

@@ -31,7 +31,7 @@ let products = [
     {
         id: 0,
         namn: 'Sneaker1',
-        img: 0,
+        img: '//shelta.se/pub_images/original/DV1129-300_1.jpg?timestamp=1677759773',
         pris: 1500,
         lager: 10,
         inCart: 0
@@ -39,7 +39,7 @@ let products = [
     {
         id: 1,
         namn: 'Sneaker2',
-        img: 1,
+        img: 'https://shelta.se/pub_images/original/AH6789-006_1.jpg',
         pris: 1500,
         lager: 10,
         inCart: 0
@@ -47,7 +47,7 @@ let products = [
     {
         id: 2,
         namn: 'Sneaker3',
-        img: 2,
+        img: 'https://shelta.se/pub_images/original/DV1129-001_1.jpg?timestamp=1673044814',
         pris: 1500,
         lager: 10,
         inCart: 0
@@ -55,7 +55,7 @@ let products = [
     {
         id: 3,
         namn: 'Sneaker4',
-        img: 3,
+        img: 'https://shelta.se/pub_images/original/AH6789-001_1.jpg?timestamp=1609192138',
         pris: 1500,
         lager: 10,
         inCart: 0
@@ -63,12 +63,14 @@ let products = [
     {
         id: 4,
         namn: 'Sneaker5',
-        img: 4,
+        img: 'https://shelta.se/pub_images/original/DM2361-100_0.jpg?timestamp=1628091117',
         pris: 1500,
         lager: 10,
         inCart: 0
     }
 ]
+
+
 
 const euro = document.querySelectorAll('.euro')
 
@@ -78,13 +80,18 @@ for(let i = 0; i < euro.length; i++ ){
         cartNumbers(products[i])
         totalCost(products[i])
         
-         if(products[i].inCart >= 10){
-            euro[i].disabled = true
-        }
-           
-        
-        
-        
+         if(products[i].inCart === 10){
+           const disabled =  euro[i].disabled = true
+           localStorage.setItem('disabled', disabled )
+           let newDisabled= localStorage.getItem('disabled')
+           newDisabled = JSON.parse(newDisabled)
+            if(newDisabled === true){
+            
+             euro[i].disabled = true
+            }
+
+            
+         }  
        
     })
 }
@@ -125,21 +132,24 @@ for(let i = 0; i < euro.length; i++ ){
     cartItems = JSON.parse(cartItems)
     console.log(cartItems) //funkar
     if(cartItems != null){
-        if(cartItems[product.img] == undefined){
+        if(cartItems[product.id] == undefined){
             cartItems = {
                 ...cartItems,
-                [product.img]: product
+                [product.id]: product
             }
             console.log(cartItems)
         }else {
-        cartItems[product.img].inCart += 1
+        cartItems[product.id].inCart += 1
+       
+        product.inCart++
+        
         console.log(cartItems) //funkar
         }
     }
     else{
         product.inCart = 1
         cartItems = {
-            [product.img]: product
+            [product.id]: product
     }
     console.log(cartItems)//funkar
   

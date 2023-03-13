@@ -77,21 +77,8 @@ displayCart()
             let cartItemsObj = localStorage.getItem('productsInCart')
             let garbo = JSON.parse(cartItemsObj)
             console.log(garbo)
-            let index = ''
-            let cartArray = Object.values(garbo)
-            console.log(cartArray )
-            let arrayIndex = Object.keys(garbo)
-            
-            index = cartArray.map(function(item){
-                  item.id
-              //console.log('DATA OBJ ID', index)
-              
-            })
-            
-           
-          
-            
-      
+
+        
             async function patchPost(products) {
               const baseURL = `https://webstore-22fa4-default-rtdb.europe-west1.firebasedatabase.app/`;
               const url = baseURL + `Products.json`;
@@ -127,11 +114,6 @@ displayCart()
               const data = await response.json();
             }
           
-            // let obj = cartArray.reduce(function(acc, cur, ndex) {
-            //   acc[ndex] = cur;
-            //   return acc[ndex];
-            // }, {});
-          
             patchPost(products);
-        
+            emptyCart()
       }

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "bounce.js": "^0.8.2"
+  }
+}
